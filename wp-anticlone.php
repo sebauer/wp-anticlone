@@ -26,7 +26,7 @@
 add_filter( 'wp_head', 'wpac_add_js' );
 
 function wpac_add_js($content) {
-  $domains = explode(',' str_replace(' ', '', get_option('wp-anticlone_settings')));
+  $domains = explode(',', str_replace(' ', '', get_option('wp-anticlone_settings')));
   $content .= <<<EOD
     <script type="text/javascript">
       var wpac_domains = [
