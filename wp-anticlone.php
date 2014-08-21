@@ -31,11 +31,12 @@ function wpac_add_js() {
   if($domains == '') return;
   $domains = explode(',', str_replace(' ', '', $domains));
   $pluginsUrl = plugins_url();
+  $domainString = '';
   foreach($domains as $domain){
-    $content .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
+    $domainString .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
   $content = <<<EOD
-  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="=[{$domains}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
+  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="window.wpac_domains=[{$domainString}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
 EOD;
   echo $content;
 }
