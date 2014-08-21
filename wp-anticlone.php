@@ -29,7 +29,7 @@ function wpac_add_js($content) {
   $domains = get_option('wp-anticlone_settings');
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
-  $domains = explode(',', str_replace(' ', '', ));
+  $domains = explode(',', str_replace(' ', '', $domains));
   $content .= <<<EOD
     <script type="text/javascript">
       var wpac_domains = [
