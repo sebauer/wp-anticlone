@@ -23,7 +23,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-add_filter( 'wp_head', 'wpac_add_js' );
+add_action( 'wp_head', 'wpac_add_js' );
 
 function wpac_add_js($content) {
   $domains = get_option('wp-anticlone_settings');
