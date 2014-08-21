@@ -92,7 +92,7 @@ function wpac_settings_init(  ) {
 
 	add_settings_field(
 		'wpac_authDomains',
-		__( 'Liste von authorisierten Domains, kommasepariert (z.B. foobar.de,foobar.info )', 'wordpress' ),
+		__( 'Liste von autorisierten Domains, kommasepariert (z.B. foobar.de,foobar.info )', 'wordpress' ),
 		'wpac_text_field_0_render',
 		'pluginPage',
 		'wpac_pluginPage_section'
