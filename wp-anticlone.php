@@ -23,7 +23,13 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-add_action( 'wp_head', 'wpac_add_js' );
+add_action( 'wp_footer', 'wpac_add_js' );
+add_action( 'wp_head', 'wpac_add_fakecss' );
+
+function wpac_add_fakecss() {
+  $pluginUrl = plugins_url();
+  echo '<link rel="stylesheet" href="'.$pluginUrl.'/wp-anticlone/wpac.css" />';
+}
 
 function wpac_add_js() {
   $domains = get_option('wpac_settings');
@@ -36,7 +42,7 @@ function wpac_add_js() {
     $domainString .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
   $content = <<<EOD
-  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="window.wpac_domains=[{$domainString}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='http://'+atob(window.wpac_domains[0])+'/{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
+  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="window.wpac_domains=[{$domainString}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
 EOD;
   echo $content;
 }
