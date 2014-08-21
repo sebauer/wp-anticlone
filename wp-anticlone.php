@@ -59,7 +59,7 @@ add_action( 'admin_init', 'wpac_settings_init' );
 
 function wpac_add_admin_menu(  ) {
 
-	add_options_page( 'WordPress Anti-Clone', 'WordPress Anti-Clone', 'manage_options', 'wp-anticlone', 'wp-anticlone_options_page' );
+	add_options_page( 'WordPress Anti-Clone', 'WordPress Anti-Clone', 'manage_options', 'wp-anticlone', 'wp_anticlone_options_page' );
 
 }
 
@@ -113,7 +113,7 @@ function wpac_settings_section_callback(  ) {
 }
 
 
-function wp-anticlone_options_page(  ) {
+function wp_anticlone_options_page(  ) {
 
 	?>
 	<form action='options.php' method='post'>
