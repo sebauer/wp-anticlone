@@ -30,7 +30,7 @@ function wpac_add_js() {
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
   $domains = explode(',', str_replace(' ', '', $domains));
-  $pluginsUrl = plugins_url('wpac.css', 'wp-anticlone');
+  $pluginsUrl = plugins_url().'/wp-anticlone/wpac.css';
   foreach($domains as $domain){
     $content .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
