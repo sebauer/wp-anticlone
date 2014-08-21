@@ -26,7 +26,10 @@
 add_filter( 'wp_head', 'wpac_add_js' );
 
 function wpac_add_js($content) {
-  $domains = explode(',', str_replace(' ', '', get_option('wp-anticlone_settings')));
+  $domains = get_option('wp-anticlone_settings');
+  $domains = $domains['wpac_authDomains'];
+  if($domains == '') return;
+  $domains = explode(',', str_replace(' ', '', ));
   $content .= <<<EOD
     <script type="text/javascript">
       var wpac_domains = [
@@ -81,13 +84,13 @@ function wpac_settings_init(  ) {
 
 	add_settings_section(
 		'wpac_pluginPage_section',
-		__( 'Your section description', 'wordpress' ),
+		__( 'Einstellungen', 'wordpress' ),
 		'wpac_settings_section_callback',
 		'pluginPage'
 	);
 
 	add_settings_field(
-		'wpac_text_field_0',
+		'wpac_authDomains',
 		__( 'Liste von authorisierten Domains, kommasepariert (z.B. foobar.de,foobar.info )', 'wordpress' ),
 		'wpac_text_field_0_render',
 		'pluginPage',
@@ -101,14 +104,14 @@ function wpac_settings_init(  ) {
 function wpac_text_field_0_render(  ) {
 
 	$options = get_option( 'wpac_settings' );
-  echo "<input type='text' name='wpac_settings[wpac_text_field_0]' value='".$options['wpac_text_field_0']."'>";
+  echo "<input type='text' name='wpac_settings[wpac_authDomains]' value='".$options['wpac_authDomains']."'>";
 
 }
 
 
 function wpac_settings_section_callback(  ) {
 
-	echo __( 'This section description', 'wordpress' );
+	echo __( '', 'wordpress' );
 
 }
 
@@ -118,7 +121,7 @@ function wp_anticlone_options_page(  ) {
 	?>
 	<form action='options.php' method='post'>
 
-		<h2>wp-anticlone</h2>
+		<h2>WordPress Anti-Clone</h2>
 
 		<?php
 		settings_fields( 'pluginPage' );
