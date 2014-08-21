@@ -30,30 +30,12 @@ function wpac_add_js() {
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
   $domains = explode(',', str_replace(' ', '', $domains));
-  $content .= <<<EOD
-    <script type="text/javascript">
-      var wpac_domains = [
-EOD;
+  $pluginsUrl = plugins_url('wpac.css', 'wp-anticlone');
   foreach($domains as $domain){
     $content .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
-  $content .= <<<EOD
-      ];
-      var wpac_hasMatches = false;
-      var wpac_loc = btoa(window.location.host.replace('www.', ''));
-      for(var i in wpac_domains) {
-        if(wpac_domains[i] == wpac_loc) {
-          wpac_hasMatches = true;
-        }
-      }
-      window.onload = function() {
-        if(wpac_hasMatches == false) {
-          var wpac_newlocation = window.location.href.replace(window.location.host, atob(wpac_domains[0]));
-          document.body.innerHTML = '<span style="font-size: 16px;color: red;font-weight: bold;">Diese Seite wurde unrechtm&auml;&szlig;ig geklont. Die echte Seite finden Sie unter '+wpac_newlocation+'. Weitere Information zu diesem illegalen Vorgehen finden Sie beispielsweise hier: <a href="http://niedblog.de/blog-kopiert-name-geklaut/" target="_blank">niedblog.de</a></span>';
-          window.location = wpac_newlocation;
-        }
-      }
-    </script>
+  $content = <<<EOD
+  <img src="wpac.png" style="display: none;" onload="=[{$domains}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}';document.getElementsByTagName('head')[0].appendChild(inj);"/>
 EOD;
   echo $content;
 }
