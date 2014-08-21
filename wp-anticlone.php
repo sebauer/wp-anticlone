@@ -25,7 +25,7 @@
 */
 add_action( 'wp_head', 'wpac_add_js' );
 
-function wpac_add_js($content) {
+function wpac_add_js() {
   $domains = get_option('wpac_settings');
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
@@ -55,6 +55,7 @@ EOD;
       }
     </script>
 EOD;
+  echo $content;
 }
 add_action( 'admin_menu', 'wpac_add_admin_menu' );
 add_action( 'admin_init', 'wpac_settings_init' );
