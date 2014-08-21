@@ -26,7 +26,7 @@
 add_action( 'wp_head', 'wpac_add_js' );
 
 function wpac_add_js($content) {
-  $domains = get_option('wp-anticlone_settings');
+  $domains = get_option('wpac_settings');
   $domains = $domains['wpac_authDomains'];
   if($domains == '') return;
   $domains = explode(',', str_replace(' ', '', $domains));
