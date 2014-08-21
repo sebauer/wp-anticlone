@@ -101,7 +101,7 @@ function wpac_settings_init(  ) {
 function wpac_text_field_0_render(  ) {
 
 	$options = get_option( 'wpac_settings' );
-	echo "<input type='text' name='wpac_settings[wpac_text_field_0]' value='".$options['wpac_text_field_0']."'>";
+  echo "<input type='text' name='wpac_settings[wpac_text_field_0]' value='".$options['wpac_text_field_0']."'>";
 
 }
 
