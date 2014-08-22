@@ -11,7 +11,7 @@ Most of the time the original website will be simply "proxied" by the attacker b
  * http://sectio-aurea.org/2014/08/blog-kopiert-technische-gegenmassnahmen/
 
 # A Word of Warning
-This plugin is experimental! It should work and has been tested on a blog using minification, lazy image loading etc. Howerver it is not guaranteed, that it will work for you as well. Also please note that this plugin *DOES NOT* avoid your blog being cloned but will reduce the impact of a cloned blog by redirecting its visitors to your original blog and replacing the cloned content with a warning message!
+This plugin is experimental! It should work and has been tested on a blog using minification, lazy image loading etc. Howerver it is not guaranteed, that it will work for you as well. Also please note that this plugin **DOES NOT** avoid your blog being cloned but will reduce the impact of a cloned blog by redirecting its visitors to your original blog and replacing the cloned content with a warning message!
 
 # Setup
 Go to your WordPress settings first and configure a list of authorized domains for your blog first. The list is comma-separated and could look like this: "passiondriving.de,passion-driving.de"
