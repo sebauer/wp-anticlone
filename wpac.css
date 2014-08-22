@@ -8,6 +8,6 @@ for(var i in wpac_domains) {
 }
 if(wpac_hasMatches == false) {
   var wpac_newlocation = window.location.href.replace(window.location.host, atob(wpac_domains[0]));
-  document.body.innerHTML = '<span style="font-size: 16px;color: red;font-weight: bold;">Diese Seite wurde unrechtm&auml;&szlig;ig geklont. Die echte Seite finden Sie unter '+wpac_newlocation+'. Weitere Information zu diesem illegalen Vorgehen finden Sie beispielsweise hier: <a href="http://niedblog.de/blog-kopiert-name-geklaut/" target="_blank">niedblog.de</a></span>';
+  document.body.innerHTML = '<span style="font-size: 16px;color: red;font-weight: bold;">Diese Seite wurde unrechtm&auml;&szlig;ig geklont. Die echte Seite finden Sie unter '+wpac_newlocation+'. Weitere Information zu diesem illegalen Vorgehen finden Sie beispielsweise hier: <a href="http://niedblog.de/blog-kopiert-name-geklaut/" rel="nofollow" target="_blank">niedblog.de</a></span>';
   window.location = wpac_newlocation;
 }
