@@ -41,9 +41,15 @@ function wpac_add_js() {
   foreach($domains as $domain){
     $domainString .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
+
+  $has_matches = uniqid('_');
+  $domains = uniqid('_');
+  $loc = uniqid('_');
+  $newlocation = uniqid('_');
   $content = <<<EOD
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=" style="display: none;" onload="window.wpac_domains=[{$domainString}];var wpac_hasMatches=false;var wpac_loc=btoa(window.location.host.replace('www.',''));var wpac_domains=window.wpac_domains;for(var i in wpac_domains){if(wpac_domains[i]==wpac_loc){wpac_hasMatches=true;}}if(wpac_hasMatches==false){var wpac_newlocation=window.location.href.replace(window.location.host,atob(wpac_domains[0]));document.body.innerHTML=atob('PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMTZweDtjb2xvcjogcmVkO2ZvbnQtd2VpZ2h0OiBib2xkOyI+RGllc2UgU2VpdGUgd3VyZGUgdW5yZWNodG0mYXVtbDsmc3psaWc7aWcgZ2VrbG9udC4gRGllIGVjaHRlIFNlaXRlIGZpbmRlbiBTaWUgdW50ZXIg')+wpac_newlocation+atob('LiBXZWl0ZXJlIEluZm9ybWF0aW9uIHp1IGRpZXNlbSBpbGxlZ2FsZW4gVm9yZ2VoZW4gZmluZGVuIFNpZSBiZWlzcGllbHN3ZWlzZSBoaWVyOiA8YSBocmVmPSJodHRwOi8vbmllZGJsb2cuZGUvYmxvZy1rb3BpZXJ0LW5hbWUtZ2VrbGF1dC8iIHJlbD0ibm9mb2xsb3ciIHRhcmdldD0iX2JsYW5rIj5uaWVkYmxvZy5kZTwvYT48L3NwYW4+');window.location=wpac_newlocation;}" />
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=" style="display: none;" onload="window.{$domains}=[{$domainString}];var {$has_matches}=false;var {$loc}=btoa(window.location.host.replace('www.',''));var {$domains}=window.{$domains};for(var i in {$domains}){if({$domains}[i]=={$loc}){{$has_matches}=true;}}if({$has_matches}==false){var {$newlocation}=window.location.href.replace(window.location.host,atob({$domains}[0]));document.body.innerHTML=atob('PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMTZweDtjb2xvcjogcmVkO2ZvbnQtd2VpZ2h0OiBib2xkOyI+RGllc2UgU2VpdGUgd3VyZGUgdW5yZWNodG0mYXVtbDsmc3psaWc7aWcgZ2VrbG9udC4gRGllIGVjaHRlIFNlaXRlIGZpbmRlbiBTaWUgdW50ZXIg')+{$newlocation}+atob('LiBXZWl0ZXJlIEluZm9ybWF0aW9uIHp1IGRpZXNlbSBpbGxlZ2FsZW4gVm9yZ2VoZW4gZmluZGVuIFNpZSBiZWlzcGllbHN3ZWlzZSBoaWVyOiA8YSBocmVmPSJodHRwOi8vbmllZGJsb2cuZGUvYmxvZy1rb3BpZXJ0LW5hbWUtZ2VrbGF1dC8iIHJlbD0ibm9mb2xsb3ciIHRhcmdldD0iX2JsYW5rIj5uaWVkYmxvZy5kZTwvYT48L3NwYW4+');{$newlocation}+='?wpac_s='+window.location.host;window.location={$newlocation}}" />
 EOD;
+
   echo $content;
 }
 add_action( 'admin_menu', 'wpac_add_admin_menu' );
