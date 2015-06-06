@@ -84,14 +84,14 @@ function wpac_add_js() {
 
 	if ($message == '') {
 		$message_start = base64_encode($span_start . 'Diese Seite wurde unrechtm&auml;&szlig;ig geklont. Die echte Seite finden Sie unter');
-		$message_end = base64_decode($span_end);
+		$message_end = base64_encode($span_end);
 	} else {
 		if ($replace_position = strpos( $message, '%page%' ) ) {
 			$message_start = base64_encode($span_start . substr($message, 0, $replace_position));
 			$message_end = base64_encode(substr($message, $replace_position + 6) . $span_end);
 		} else {
 			$message_start = base64_encode( '<span style="font-size: 16px;color: red;font-weight: bold;">' . $message );
-			$message_end = base64_decode($span_end);
+			$message_end = base64_encode($span_end);
 		}
 	}
 
