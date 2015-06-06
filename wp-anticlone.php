@@ -82,7 +82,7 @@ function wpac_add_js() {
 	$span_start = '<span style="font-size: 16px;color: red;font-weight: bold;">';
 	$span_end = '</span>';
 
-	if ($message != '') {
+	if ($message == '') {
 		$message_start = base64_encode($span_start . 'Diese Seite wurde unrechtm&auml;&szlig;ig geklont. Die echte Seite finden Sie unter');
 		$message_end = base64_decode($span_end);
 	} else {
