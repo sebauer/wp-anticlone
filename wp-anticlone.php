@@ -114,7 +114,7 @@ EOD;
 }
 add_action( 'admin_menu', 'wpac_add_admin_menu' );
 add_action( 'admin_init', 'wpac_settings_init' );
-add_action( 'init', 'wp_anticlone_frontend_init');
+add_action( 'plugins_loaded', 'wp_anticlone_frontend_init');
 
 function wpac_add_admin_menu(  ) {
 
