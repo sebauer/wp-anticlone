@@ -32,13 +32,25 @@ function wpac_add_fakecss() {
 }
 
 function wpac_add_js() {
+  // Default domains which should not be blacklisted, e.g. translation services
+  $defaultDomains = 'translate.googleusercontent.com';
+
   $domains = get_option('wpac_settings');
   $domains = $domains['wpac_authDomains'];
-  if($domains == '') return;
+
+  // Add default domains
+  if($domains == '') {
+    $domains = $defaultDomains;
+  } else {
+    $domains .= ','.$defaultDomains;
+  }
+
   $domains = explode(',', str_replace(' ', '', $domains));
   $pluginsUrl = plugins_url();
   $domainString = '';
   foreach($domains as $domain){
+    // Do not add empty domain string (could result from multiple commas)
+    if(empty($domain)) continue;
     $domainString .= '\''.base64_encode(str_replace('.www', '', $domain)).'\',';
   }
 
